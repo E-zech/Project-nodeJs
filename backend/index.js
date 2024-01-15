@@ -1,8 +1,10 @@
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
+import moment from 'moment';
 import chalk from 'chalk';
 import morgan from 'morgan';
+import fs from 'fs';
 
 import signup from './handlers/auth/routes/signup.js';
 import login from './handlers/auth/routes/login.js';
@@ -42,6 +44,22 @@ app.use(cors({
 }));
 
 app.use(morgan(":date[iso] :method :url :status :response-time ms"));
+
+app.use((req, res, next) => {
+    const fileName = `logs/log_${moment().format("Y_M_D")}.txt`;
+
+    let content = '';
+
+    content += `Time: ${new Date().toISOString()}\n`;
+    content += `Method: ${req.method}\n`;
+    content += `Route: ${req.url}\n`;
+
+    content += '\n';
+
+    fs.appendFile(fileName, content, err => { });
+
+    next();
+});
 
 app.listen(port, () => {
     console.log(chalk.green(`app is listening to port : ${chalk.bgGreen(port)}`));
