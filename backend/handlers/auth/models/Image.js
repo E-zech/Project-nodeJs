@@ -6,5 +6,5 @@ export const Image = new mongoose.Schema({
         allow: (""),
         match: /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([/\w\.-]*)*\/?$/
     },
-    alt: { type: String, required: true }
+    alt: { type: String, allow: ("") }
 });

@@ -5,6 +5,7 @@ import moment from 'moment';
 import chalk from 'chalk';
 import morgan from 'morgan';
 import fs from 'fs';
+import { coloredStatus } from './morganConfig.js';
 
 import signup from './handlers/auth/routes/signup.js';
 import login from './handlers/auth/routes/login.js';
@@ -24,16 +25,18 @@ import deleteCard from './handlers/card/routes/deleteCard.js';
 
 
 async function main() {
-    await mongoose.connect('mongodb://127.0.0.1:27017/project-NodeJs');
-    console.log(chalk.green(`mongodb connection established on port : ${chalk.bgGreen('27017')}`));
+    try {
+        await mongoose.connect('mongodb://127.0.0.1:27017/project-NodeJs');
+        console.log(chalk.green(`mongodb connection established on port : ${chalk.bgGreen('27017')}`));
+    }
+    catch (err) {
+        console.error(chalk.bgRed(err));
+    }
 }
 
-main().catch(err => console.log(chalk.bgRed(err)));
-
+main();
 
 const app = express();
-const port = 5000;
-
 app.use(express.json());
 
 app.use(cors({
@@ -43,7 +46,8 @@ app.use(cors({
     allowedHeaders: 'Content-Type, Accept, Authorization',
 }));
 
-app.use(morgan(":date[iso] :method :url :status :response-time ms"));
+morgan.token('coloredStatus', coloredStatus);
+app.use(morgan(':coloredStatus :response-time ms'));
 
 app.use((req, res, next) => {
     const fileName = `logs/log_${moment().format("Y_M_D")}.txt`;
@@ -56,11 +60,24 @@ app.use((req, res, next) => {
 
     content += '\n';
 
-    fs.appendFile(fileName, content, err => { });
+    // Capture the status code after the response has been sent
+    res.on('finish', () => {
+        if (res.statusCode >= 400) {
+            content += `Status Code: ${res.statusCode}\n\n`;
+
+            fs.appendFile(fileName, content, err => {
+                if (err) {
+                    console.error('Error writing to log file:', err);
+                }
+            });
+        }
+    });
 
     next();
 });
 
+
+const port = 5000;
 app.listen(port, () => {
     console.log(chalk.green(`app is listening to port : ${chalk.bgGreen(port)}`));
 });

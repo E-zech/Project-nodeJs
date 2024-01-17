@@ -19,12 +19,12 @@ export const UserValid = Joi.object({
     password: Joi.string().pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{9,}$/).message('password must be 9 characters long and include 1 uppercase letter, 1 lowercase letter, 1 special character, and numbers.').required(),
 
     address: Joi.object({
-        state: Joi.string().min(2).max(56).required(),
+        state: Joi.string().min(2).max(56).allow(''),
         country: Joi.string().min(2).max(56).required(),
         city: Joi.string().required(),
         street: Joi.string().required(),
         houseNumber: Joi.number().required(),
-        zip: Joi.number().required(),
+        zip: Joi.number().allow(''),
     }).required(),
 
     image: Joi.object({

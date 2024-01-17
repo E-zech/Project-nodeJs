@@ -16,8 +16,8 @@ export const getUserId = (req, res) => {
 
     } catch (error) {
 
-        console.error(chalk.red("Error decoding token:", error.message));
-        return res.status(401).send('User not authenticated');
+        console.error(chalk.red("Error:", error.message));
+        return res.status(401).send('User not Authorized');
     }
 };
 
