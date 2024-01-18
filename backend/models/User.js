@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
-import { Name } from "./Name.js";
-import { Address } from "./Address.js";
-import { Image } from "./Image.js";
+import { Name } from "./shared/Name.js";
+import { Address } from "./shared/Address.js";
+import { Image } from "./shared/Image.js";
 
 
 const userSchema = new mongoose.Schema({
@@ -66,8 +66,10 @@ userSchema.pre('save', async function (next) {
     }
 });
 
+
 const User = mongoose.model("users", userSchema);
 
 export default User;
+
 
 

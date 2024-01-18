@@ -1,10 +1,9 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import User from '../models/User.js';
-import { userLoginValidation } from '../validation/userJoi.js';
-import { JWT_SECRET } from '../../../config.js';
+import User from '../../models/User.js';
+import { userLoginValidation } from '../../validation/userJoi.js';
+import { JWT_SECRET } from '../../configs/config.js';
 import chalk from 'chalk';
-
 
 const login = app => {
     app.post('/users/login', async (req, res) => {
@@ -12,9 +11,9 @@ const login = app => {
             const { error, value } = userLoginValidation.validate(req.body, { abortEarly: false });
 
             if (error) {
-                const errorObj = error.details.map(err => err.message);
+                const errorObj = error.details.map(err => err.message.replace(/['"]/g, ''));
                 console.log(errorObj);
-                return res.status(400).send(errorObj.pop());
+                return res.status(400).send(errorObj);
             };
 
             const { email, password } = value;

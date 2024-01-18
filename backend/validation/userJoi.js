@@ -4,9 +4,9 @@ import Joi from 'joi';
 export const UserValid = Joi.object({
 
     name: Joi.object({
-        first: Joi.string().min(2).max(20).required(),
+        first: Joi.string().min(2).max(20).label('first name').required(),
         middle: Joi.string().allow(''),
-        last: Joi.string().min(2).max(20).required(),
+        last: Joi.string().min(2).max(20).label('last name').required(),
     }).required(),
 
     isAdmin: Joi.boolean().default(false),
@@ -20,10 +20,10 @@ export const UserValid = Joi.object({
 
     address: Joi.object({
         state: Joi.string().min(2).max(56).allow(''),
-        country: Joi.string().min(2).max(56).required(),
-        city: Joi.string().required(),
-        street: Joi.string().required(),
-        houseNumber: Joi.number().required(),
+        country: Joi.string().min(2).max(56).label('country').required(),
+        city: Joi.string().label('city').required(),
+        street: Joi.string().label('street').required(),
+        houseNumber: Joi.number().label('houseNumber').required(),
         zip: Joi.number().allow(''),
     }).required(),
 

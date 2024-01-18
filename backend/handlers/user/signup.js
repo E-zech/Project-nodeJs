@@ -1,15 +1,17 @@
-import User from '../models/User.js';
-import { UserValid } from '../validation/userJoi.js';
+import User from '../../models/User.js';
+import { UserValid } from '../../validation/userJoi.js';
 import chalk from 'chalk';
 
 //signup 
+
+
 const signup = app => {
     app.post('/signup', async (req, res) => {
         try {
             const { error, value } = UserValid.validate(req.body, { abortEarly: false }); // how to exctarct error from here
 
             if (error) {
-                const errorObj = error.details.map(err => err.message);
+                const errorObj = error.details.map(err => err.message.replace(/['"]/g, ''));
                 console.log(errorObj);
                 return res.status(400).send(errorObj);
             }

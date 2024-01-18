@@ -1,5 +1,5 @@
-import Card from '../models/Card.js';
-import guard from '../../../guard.js';
+import Card from '../../models/Card.js';
+import guard from '../../middleware/guard.js';
 import chalk from 'chalk';
 
 const getCard = app => {

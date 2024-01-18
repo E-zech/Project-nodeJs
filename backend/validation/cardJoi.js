@@ -18,13 +18,14 @@ export const CardValid = Joi.object({
     }).required(),
 
     address: Joi.object({
-        state: Joi.string().min(2).max(30).allow(''),
-        country: Joi.string().min(2).max(30).required(),
-        city: Joi.string().min(2).max(30).required(),
-        street: Joi.string().min(2).max(30).required(),
-        houseNumber: Joi.number().required(),
+        state: Joi.string().min(2).max(56).allow(''),
+        country: Joi.string().min(2).max(56).label('country').required(),
+        city: Joi.string().label('city').required(),
+        street: Joi.string().label('street').required(),
+        houseNumber: Joi.number().label('houseNumber').required(),
         zip: Joi.number().allow(''),
     }).required(),
+
 
     bizNumber: Joi.number(),
     likes: Joi.array().default([]),

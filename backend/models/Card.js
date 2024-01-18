@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { Types } from "mongoose";
-import { Image } from "./Image.js";
-import { Address } from "./Address.js";
+import { Image } from "./shared/Image.js";
+import { Address } from "./shared/Address.js";
 
 
 

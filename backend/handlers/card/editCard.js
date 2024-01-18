@@ -1,8 +1,10 @@
-import Card from '../models/Card.js';
-import { CardValid } from '../validation/cardJoi.js';
-import { getUserId } from '../../../config.js';
-import guard from '../../../guard.js';
+import Card from '../../models/Card.js';
+import { CardValid } from '../../validation/cardJoi.js';
+import { getUserId } from '../../configs/config.js';
+import guard from '../../middleware/guard.js';
 import chalk from 'chalk';
+
+
 
 const editCard = app => { // only admin can change biznumber do this !
     app.put('/cards/:id', guard, async (req, res) => {
@@ -22,7 +24,7 @@ const editCard = app => { // only admin can change biznumber do this !
             const { error, value } = CardValid.validate(req.body, { abortEarly: false });
 
             if (error) {
-                const errorObj = error.details.map(err => err.message);
+                const errorObj = error.details.map(err => err.message.replace(/['"]/g, ''));
                 console.log(errorObj);
                 return res.status(400).send(errorObj);
             }

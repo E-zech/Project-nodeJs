@@ -1,6 +1,6 @@
-import User from '../models/User.js';
-import { getUserId } from '../../../config.js';
-import guard from '../../../guard.js';
+import User from '../../models/User.js';
+import { getUserId } from '../../configs/config.js';
+import guard from '../../middleware/guard.js';
 import chalk from 'chalk';
 
 
@@ -17,6 +17,7 @@ const changeIsBusiness = app => {
         try {
             const user = await User.findById(userId).select('-password');
             user.isBusiness = !user.isBusiness;
+
             await user.save();
 
             res.send(user);

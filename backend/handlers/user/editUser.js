@@ -1,7 +1,7 @@
-import User from '../models/User.js';
-import { getUserId } from '../../../config.js';
-import { UserValid } from '../validation/userJoi.js';
-import guard from '../../../guard.js';
+import User from '../../models/User.js';
+import { getUserId } from '../../configs/config.js';
+import { UserValid } from '../../validation/userJoi.js';
+import guard from '../../middleware/guard.js';
 import chalk from 'chalk';
 
 
@@ -25,7 +25,7 @@ const editUser = app => {
             const { error, value } = UserValid.validate(req.body, { abortEarly: false });
 
             if (error) {
-                const errorObj = error.details.map(err => err.message);
+                const errorObj = error.details.map(err => err.message.replace(/['"]/g, ''));
                 console.log(errorObj)
                 return res.status(400).send('Invalid request data');
             }

@@ -1,7 +1,8 @@
-import Card from '../models/Card.js';
-import { getUserId } from '../../../config.js';
-import guard from '../../../guard.js';
+import Card from '../../models/Card.js';
+import { getUserId } from '../../configs/config.js';
+import guard from '../../middleware/guard.js';
 import chalk from 'chalk';
+
 
 const likeCard = app => {
 

@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { JWT_SECRET } from './config.js';
+import { JWT_SECRET } from '../configs/config.js';
 import chalk from 'chalk';
 
 const guard = (req, res, next) => {

@@ -6,5 +6,5 @@ export const Address = new mongoose.Schema({
     city: { type: String, required: true },
     street: { type: String, required: true },
     houseNumber: { type: Number, required: true },
-    zip: { type: Number, min: 0, max: 99999 }
+    zip: { type: Number, min: 0, max: 99999, default: 0 }
 });
