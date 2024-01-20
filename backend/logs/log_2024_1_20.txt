@@ -194,3 +194,10 @@ Status Code: 500
 
 Error: 
 
+Time: 2024-01-20T13:07:33.130Z
+Method: POST
+Route: /users/login
+Status Code: 403
+
+Error: 
+

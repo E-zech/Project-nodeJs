@@ -1,8 +1,7 @@
 import User from '../../models/User.js';
-import { getUserFromTKN } from '../../configs/config.js';
+import { getUserFromTKN, generateToken } from '../../configs/config.js';
 import { UserValid } from '../../validation/userJoi.js';
 import guard from '../../middleware/guard.js';
-import TokenBlacklist from '../../models/shared/TokenBlacklist.js';
 import bcrypt from 'bcrypt';
 
 
@@ -11,7 +10,6 @@ const editUser = app => {
     app.put('/users/:id', guard, async (req, res) => {
         const token = getUserFromTKN(req, res);
         const userId = token.userId;
-        let logout = false;
 
         const paramsId = req.params.id; // id from params
 
@@ -39,7 +37,18 @@ const editUser = app => {
             const passwordMatch = await bcrypt.compare(value.password, updateUser.password);
 
             if (!passwordMatch) {
-                logout = true;
+                invalidateToken(req.headers.authorization)
+                const newToken = generateToken({
+                    userId: updateUser._id,
+                    isAdmin: token.isAdmin,
+                    isBusiness: token.isBusiness,
+                });
+
+                return res.send({
+                    message: "Password changed. Token changed. Please log in again.",
+                    user: updateUser.toObject(),
+                    token: newToken,
+                });
             }
 
             updateUser.set(value);
@@ -49,27 +58,6 @@ const editUser = app => {
                 ...updateUser.toObject(),
                 password: undefined,
             };
-
-            if (logout) {
-                console.log(token);
-
-                // Check if the token is already in the blacklist
-                const isTokenInvalid = await TokenBlacklist.exists({ token });
-
-                if (!isTokenInvalid) {
-                    // If the token is not in the blacklist, add it
-                    const tokenBlacklist = new TokenBlacklist({ token });
-                    await tokenBlacklist.save();
-                    console.log(tokenBlacklist);
-                } else {
-                    console.log("Token is already in the blacklist.");
-                }
-
-                return res.send({
-                    message: "Password changed. Token deleted. Please log in again.",
-                    user: user
-                });
-            }
 
             res.send({
                 message: "User updated successfully.",

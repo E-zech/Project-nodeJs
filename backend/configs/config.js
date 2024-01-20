@@ -19,4 +19,13 @@ export const getUserFromTKN = (req, res) => {
     }
 };
 
+export const generateToken = (payload) => {
+    // Set the token expiration time as desired
+    const expiration = '1h';
+
+    // Sign the token with the payload and secret key
+    const token = jwt.sign(payload, JWT_SECRET, { expiresIn: expiration });
+
+    return token;
+};
 export { JWT_SECRET };
