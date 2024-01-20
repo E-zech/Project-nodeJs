@@ -5,8 +5,8 @@ import chalk from 'chalk';
 const guard = (req, res, next) => {
     jwt.verify(req.headers.authorization, JWT_SECRET, (err, data) => {
         if (err) {
-            console.error(chalk.red('User not Authorized / guard.js:', err));
-            res.status(401).send('User not Authorized');
+            console.error(chalk.red('User not Authorized / guard.js:', err.message)); // clean / guard.js
+            res.status(401).send('Authentication failed. Please provide a valid token');
         } else {
             next();
         }

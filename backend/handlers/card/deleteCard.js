@@ -1,13 +1,13 @@
 import User from '../../models/User.js';
 import Card from '../../models/Card.js';
-import { getUserId } from '../../configs/config.js';
+import { getUserFromTKN } from '../../configs/config.js';
 import guard from '../../middleware/guard.js';
 import chalk from 'chalk';
 
 const deleteCard = app => {
     app.delete('/cards/:id', guard, async (req, res) => {
         try {
-            const userId = getUserId(req, res); // id from token 
+            const userId = getUserFromTKN(req, res); // id from token 
 
             const userByToken = await User.findById(userId); // user by id from token
 

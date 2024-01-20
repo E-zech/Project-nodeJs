@@ -1,12 +1,12 @@
 import User from '../../models/User.js';
-import { getUserId } from '../../configs/config.js';
+import { getUserFromTKN } from '../../configs/config.js';
 import guard from '../../middleware/guard.js';
 import chalk from 'chalk';
 
 
 const deleteUser = app => {
     app.delete('/users/:id', guard, async (req, res) => {
-        const userId = getUserId(req, res); // id of the user from the toekn ;
+        const userId = getUserFromTKN(req, res); // id of the user from the toekn ;
         const user = await User.findById(userId); // check the user in the DB by the ID from the toekn
 
         if (!req.params.id) {

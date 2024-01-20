@@ -1,5 +1,5 @@
 import User from '../../models/User.js';
-import { getUserId } from '../../configs/config.js';
+import { getUserFromTKN } from '../../configs/config.js';
 import guard from '../../middleware/guard.js';
 import chalk from 'chalk';
 
@@ -7,30 +7,16 @@ import chalk from 'chalk';
 const getAllUsers = app => {
     app.get('/users', guard, async (req, res) => {
         try {
-            const userId = getUserId(req, res);
+            const token = getUserFromTKN(req, res);
 
-            if (!userId) {
-                return res.status(401).send('User not authenticated');
-            }
-
-            const user = await User.findById(userId);
-
-            if (!user) {
-                return res.status(404).send('User not found');
-            }
-
-            if (user.isAdmin) {
-                const allUsers = await User.find().select('-password');
-
-                return res.json(allUsers);
-
-            } else {
-
+            if (!token.isAdmin) {
                 return res.status(403).send('Access forbidden. Admins only.');
             }
 
-        } catch (err) {
+            const allUsers = await User.find().select('-password');
+            res.json(allUsers);
 
+        } catch (err) {
             console.error(chalk.red(err));
             return res.status(500).send('Internal Server Error');
         }

@@ -1,6 +1,6 @@
 import Card from '../../models/Card.js';
 import { CardValid } from '../../validation/cardJoi.js';
-import { getUserId } from '../../configs/config.js';
+import { getUserFromTKN } from '../../configs/config.js';
 import guard from '../../middleware/guard.js';
 import chalk from 'chalk';
 
@@ -9,7 +9,7 @@ import chalk from 'chalk';
 const editCard = app => { // only admin can change biznumber do this !
     app.put('/cards/:id', guard, async (req, res) => {
         try {
-            const userIdByToken = getUserId(req, res); // id of the user from the token
+            const userIdByToken = getUserFromTKN(req, res); // id of the user from the token
             const cardId = req.params.id; // id of the card from the params
 
             const card = await Card.findById(cardId);

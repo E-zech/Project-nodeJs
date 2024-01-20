@@ -1,0 +1,196 @@
+Time: 2024-01-20T08:44:24.683Z
+Method: POST
+Route: /users/login
+Status Code: 403
+
+Error: 
+
+Time: 2024-01-20T08:58:20.510Z
+Method: GET
+Route: /users/65a923f8e8a2fe75ca86f9d8
+Status Code: 401
+
+Error: 
+
+Time: 2024-01-20T08:59:14.393Z
+Method: GET
+Route: /users/65a923f8e8a2fe75ca86f9d8
+Status Code: 401
+
+Error: 
+
+Time: 2024-01-20T09:00:50.376Z
+Method: GET
+Route: /users/65a923f8e8a2fe75ca86f9d8
+Status Code: 401
+
+Error: 
+
+Time: 2024-01-20T09:00:51.652Z
+Method: GET
+Route: /users/65a923f8e8a2fe75ca86f9d8
+Status Code: 401
+
+Error: 
+
+Time: 2024-01-20T09:01:17.844Z
+Method: GET
+Route: /users/65a923f8e8a2fe75ca86f9d8
+Status Code: 401
+
+Error: 
+
+Time: 2024-01-20T09:03:18.768Z
+Method: GET
+Route: /users/65a923f8e8a2fe75ca86f9d8
+Status Code: 401
+
+Error: 
+
+Time: 2024-01-20T09:03:37.427Z
+Method: GET
+Route: /users/65a923f8e8a2fe75ca86f9d8
+Status Code: 401
+
+Error: 
+
+Time: 2024-01-20T09:08:13.731Z
+Method: GET
+Route: /users/65a923f8e8a2fe75ca86f9d8
+Status Code: 401
+
+Error: 
+
+Time: 2024-01-20T09:09:15.432Z
+Method: GET
+Route: /users/65a923f8e8a2fe75ca86f9d8
+Status Code: 401
+
+Error: 
+
+Time: 2024-01-20T09:10:18.528Z
+Method: GET
+Route: /users/65a923f8e8a2fe75ca86f9d8
+Status Code: 401
+
+Error: 
+
+Time: 2024-01-20T09:10:19.836Z
+Method: GET
+Route: /users/65a923f8e8a2fe75ca86f9d8
+Status Code: 401
+
+Error: 
+
+Time: 2024-01-20T09:13:24.956Z
+Method: GET
+Route: /users
+Status Code: 401
+
+Error: 
+
+Time: 2024-01-20T09:13:28.909Z
+Method: GET
+Route: /users
+Status Code: 500
+
+Error: 
+
+Time: 2024-01-20T09:26:13.880Z
+Method: POST
+Route: /users/login
+Status Code: 403
+
+Error: 
+
+Time: 2024-01-20T09:32:47.376Z
+Method: POST
+Route: /users/login
+Status Code: 403
+
+Error: 
+
+Time: 2024-01-20T09:32:50.414Z
+Method: POST
+Route: /users/login
+Status Code: 403
+
+Error: 
+
+Time: 2024-01-20T09:38:57.639Z
+Method: PUT
+Route: /users/65ab934ca4ef55e47065b916
+Status Code: 401
+
+Error: 
+
+Time: 2024-01-20T10:05:21.437Z
+Method: POST
+Route: /users/login
+Status Code: 403
+
+Error: 
+
+Time: 2024-01-20T11:33:14.668Z
+Method: POST
+Route: /users/login
+Status Code: 403
+
+Error: 
+
+Time: 2024-01-20T11:33:35.410Z
+Method: PUT
+Route: /users/65ab98fb4bc27a9fec9d8180
+Status Code: 401
+
+Error: 
+
+Time: 2024-01-20T11:33:47.450Z
+Method: PUT
+Route: /users/65ab98fb4bc27a9fec9d8180
+Status Code: 500
+
+Error: 
+
+Time: 2024-01-20T12:12:37.458Z
+Method: PUT
+Route: /users/65ab98fb4bc27a9fec9d8180
+Status Code: 500
+
+Error: 
+
+Time: 2024-01-20T12:13:02.227Z
+Method: PUT
+Route: /users/65ab98fb4bc27a9fec9d8180
+Status Code: 500
+
+Error: 
+
+Time: 2024-01-20T12:17:09.341Z
+Method: PUT
+Route: /users/65ab98fb4bc27a9fec9d8180
+Status Code: 500
+
+Error: 
+
+Time: 2024-01-20T12:19:53.869Z
+Method: PUT
+Route: /users/65ab98fb4bc27a9fec9d8180
+Status Code: 500
+
+Error: 
+
+Time: 2024-01-20T12:20:28.731Z
+Method: PUT
+Route: /users/65ab98fb4bc27a9fec9d8180
+Status Code: 500
+
+Error: 
+
+Time: 2024-01-20T12:20:57.108Z
+Method: PUT
+Route: /users/65ab98fb4bc27a9fec9d8180
+Status Code: 500
+
+Error: 
+

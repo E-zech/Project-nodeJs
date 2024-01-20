@@ -1,7 +1,7 @@
 import User from '../../models/User.js';
 import Card from '../../models/Card.js';
 import { CardValid } from '../../validation/cardJoi.js';
-import { getUserId } from '../../configs/config.js';
+import { getUserFromTKN } from '../../configs/config.js';
 import guard from '../../middleware/guard.js';
 import chalk from 'chalk';
 
@@ -10,7 +10,7 @@ const createCard = app => {
     app.post('/cards', guard, async (req, res) => {
         try {
 
-            const tokenId = getUserId(req, res); // id of the user from the toekn ;
+            const tokenId = getUserFromTKN(req, res); // id of the user from the toekn ;
             const user = await User.findById(tokenId); // check the user in the DB by the ID from the toekn
             if (!user) {
                 return res.status(404).send('User not found');

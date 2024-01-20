@@ -1,13 +1,13 @@
 import User from '../../models/User.js';
 import Card from '../../models/Card.js';
-import { getUserId } from '../../configs/config.js';
+import { getUserFromTKN } from '../../configs/config.js';
 import guard from '../../middleware/guard.js';
 import chalk from 'chalk';
 
 const getMyCards = app => {
     app.get('/cards/my-cards', guard, async (req, res) => {
         try {
-            const userIdByToken = getUserId(req, res);
+            const userIdByToken = getUserFromTKN(req, res);
             const userByToken = await User.findById(userIdByToken);
 
             const myCards = await Card.find({ userId: userIdByToken });

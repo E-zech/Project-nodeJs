@@ -3,21 +3,19 @@ import chalk from 'chalk';
 
 const JWT_SECRET = "Project#nodeJs#!2024!Full&Stack!123!";
 
-export const getUserId = (req, res) => {
+export const getUserFromTKN = (req, res) => {
     if (!req.headers.authorization) {
-
-        console.error(chalk.yellow("Authentication failed: Authorization header missing."));
+        console.error(chalk.red("Authentication failed: Authorization header missing."));
         return res.status(401).send('User not authenticated');
     }
 
     try {
-        const token = jwt.decode(req.headers.authorization, JWT_SECRET); // i change decode
-        return token.userId;// token.isBusiness , token.isAdmin
+        const token = jwt.decode(req.headers.authorization, JWT_SECRET);
+        return token;
 
     } catch (error) {
-
         console.error(chalk.red("Error:", error.message));
-        return res.status(401).send('User not Authorized');
+        return res.status(401).send('User not Authorized / config.js');
     }
 };
 

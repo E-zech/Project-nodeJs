@@ -1,5 +1,5 @@
 import User from '../../models/User.js';
-import { getUserId } from '../../configs/config.js';
+import { getUserFromTKN } from '../../configs/config.js';
 import guard from '../../middleware/guard.js';
 import chalk from 'chalk';
 
@@ -7,22 +7,22 @@ import chalk from 'chalk';
 const getUser = app => {
     app.get('/users/:id', guard, async (req, res) => {
 
-        const userId = getUserId(req, res);
-        const userByToken = await User.findById(userId); /// change the name of the constant 1
+        const token = getUserFromTKN(req, res);
+        const userId = token.userId;
 
-        if (userId !== req.params.id && !userByToken?.isAdmin) {
+        if (userId !== req.params.id && !token?.isAdmin) {
             return res.status(401).send('you are not authorized to do so');
         }
 
         try {
-            const userByParams = await User.findById(req.params.id).select('-password');/// change the name of the constant 2
+            const userByParams = await User.findById(req.params.id).select('-password');
 
 
             if (!userByParams) {
                 return res.status(403).send('User not found');
             }
 
-            const message = userByToken.isAdmin
+            const message = token.isAdmin
                 ? `Here are the details of ${userByParams.name.first}.`
                 : `Here are your details, ${userByParams.name.first}.`;
 
@@ -32,7 +32,7 @@ const getUser = app => {
 
         catch (err) {
             console.log(err)
-            return res.status(403).send('User not found');
+            return res.status(403).send(`Error : ${err}`);
         }
     });
 }
