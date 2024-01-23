@@ -10,8 +10,9 @@ const createCard = app => {
     app.post('/cards', guard, async (req, res) => {
         try {
 
-            const tokenId = getUserFromTKN(req, res); // id of the user from the toekn ;
-            const user = await User.findById(tokenId); // check the user in the DB by the ID from the toekn
+            const token = getUserFromTKN(req, res);
+            const userId = token.userId;
+            const user = await User.findById(userId); // check the user in the DB by the ID from the toekn
             if (!user) {
                 return res.status(404).send('User not found');
             }
@@ -31,7 +32,7 @@ const createCard = app => {
 
             const newCard = new Card({
                 ...value,
-                userId: tokenId,
+                userId
             });
 
             await newCard.save();

@@ -1,5 +1,5 @@
 import User from '../../models/User.js';
-import { getUserFromTKN, generateToken } from '../../configs/config.js';
+import { getUserFromTKN } from '../../configs/config.js';
 import { UserValid } from '../../validation/userJoi.js';
 import guard from '../../middleware/guard.js';
 import bcrypt from 'bcrypt';
@@ -31,25 +31,9 @@ const editUser = app => {
             if (!updateUser) {
                 return res.status(404).send('User not found');
             }
+
             value.isAdmin = token.isAdmin;
             value.isBusiness = token.isBusiness;
-
-            const passwordMatch = await bcrypt.compare(value.password, updateUser.password);
-
-            if (!passwordMatch) {
-                invalidateToken(req.headers.authorization)
-                const newToken = generateToken({
-                    userId: updateUser._id,
-                    isAdmin: token.isAdmin,
-                    isBusiness: token.isBusiness,
-                });
-
-                return res.send({
-                    message: "Password changed. Token changed. Please log in again.",
-                    user: updateUser.toObject(),
-                    token: newToken,
-                });
-            }
 
             updateUser.set(value);
             await updateUser.save();

@@ -2,7 +2,6 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from '../../models/User.js';
 import { userLoginValidation } from '../../validation/userJoi.js';
-import { JWT_SECRET } from '../../configs/config.js';
 import chalk from 'chalk';
 
 const login = app => {
@@ -12,7 +11,6 @@ const login = app => {
 
             if (error) {
                 const errorObj = error.details.map(err => err.message.replace(/['"]/g, ''));
-                console.log(errorObj);
                 return res.status(400).send(errorObj);
             };
 
@@ -20,7 +18,7 @@ const login = app => {
             const user = await User.findOne({ email });
 
             if (!user) {
-                return res.status(403).send("email or password is incorrect");
+                return res.status(401).send("email or password is incorrect");
             };
 
             const passwordMatch = await bcrypt.compare(password, user.password);
@@ -33,7 +31,7 @@ const login = app => {
                 userId: user._id,
                 isAdmin: user.isAdmin,
                 isBusiness: user.isBusiness,
-            }, JWT_SECRET, { expiresIn: '1h' });
+            }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
             res.send({
                 message: `Hey ${user.name.first}, you have successfully logged in.`,

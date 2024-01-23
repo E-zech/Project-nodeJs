@@ -1,8 +1,6 @@
 import jwt from 'jsonwebtoken';
 import chalk from 'chalk';
 
-const JWT_SECRET = "Project#nodeJs#!2024!Full&Stack!123!";
-
 export const getUserFromTKN = (req, res) => {
     if (!req.headers.authorization) {
         console.error(chalk.red("Authentication failed: Authorization header missing."));
@@ -10,7 +8,7 @@ export const getUserFromTKN = (req, res) => {
     }
 
     try {
-        const token = jwt.decode(req.headers.authorization, JWT_SECRET);
+        const token = jwt.decode(req.headers.authorization, process.env.JWT_SECRET);
         return token;
 
     } catch (error) {
@@ -19,13 +17,4 @@ export const getUserFromTKN = (req, res) => {
     }
 };
 
-export const generateToken = (payload) => {
-    // Set the token expiration time as desired
-    const expiration = '1h';
 
-    // Sign the token with the payload and secret key
-    const token = jwt.sign(payload, JWT_SECRET, { expiresIn: expiration });
-
-    return token;
-};
-export { JWT_SECRET };

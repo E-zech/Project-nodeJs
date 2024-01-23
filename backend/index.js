@@ -6,25 +6,29 @@ import morgan from 'morgan';
 import { coloredStatus } from './configs/morganConfig.js';
 import userRoutes from './routes/userRoutes.js';
 import cardRoutes from './routes/cardRoutes.js';
+import { initialDataStart } from './initial-data/initial-data.js';
 import logMiddleware from './middleware/logMiddleware.js';
+import dotenv from 'dotenv';
+
+// Environment setup
+const env = dotenv.config();
+const port = env.parsed.PORT;
 
 // MongoDB Connection
 async function main() {
     try {
-        await mongoose.connect('mongodb://127.0.0.1:27017/project-NodeJs');
+        await mongoose.connect(env.parsed.REMOTE_URL);
         console.log(chalk.green(`mongodb connection established on port : ${chalk.bgGreen('27017')}`));
+        await initialDataStart();
     }
     catch (err) {
         console.error(chalk.bgRed(err));
     }
 }
-
 main();
 
 // Express App Config
-const port = 5000;
 const app = express();
-
 app.use(express.json());
 
 app.use(cors({

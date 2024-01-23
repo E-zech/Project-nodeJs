@@ -39,10 +39,9 @@ const cardSchema = new mongoose.Schema({
 
     address: Address,
 
-    bizNumber: { type: Number, default: randomNumber, trim: true },
+    bizNumber: { type: Number, default: randomNumber, trim: true, unique: true, },
 
     likes: [String],
-
 
     userId: {
         type: Types.ObjectId,
