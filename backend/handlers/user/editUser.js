@@ -2,9 +2,6 @@ import User from '../../models/User.js';
 import { getUserFromTKN } from '../../configs/config.js';
 import { UserValid } from '../../validation/userJoi.js';
 import guard from '../../middleware/guard.js';
-import bcrypt from 'bcrypt';
-
-
 
 const editUser = app => {
     app.put('/users/:id', guard, async (req, res) => {
@@ -22,8 +19,7 @@ const editUser = app => {
 
             if (error) {
                 const errorObj = error.details.map(err => err.message.replace(/['"]/g, ''));
-                console.log(errorObj); // clean
-                return res.status(400).send('Invalid request data');
+                return res.status(400).send(errorObj);
             }
 
             const updateUser = await User.findById(userId);

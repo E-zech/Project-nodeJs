@@ -7,24 +7,16 @@ import chalk from 'chalk';
 const getMyCards = app => {
     app.get('/cards/my-cards', guard, async (req, res) => {
         try {
-            const userIdByToken = getUserFromTKN(req, res);
-            const userByToken = await User.findById(userIdByToken);
-
-            const myCards = await Card.find({ userId: userIdByToken });
-
-            // const numberedCards = myCards.map((card, index) => ({
-            //     number: index + 1,
-            //     ...card.toObject()  Convert Mongoose document to plain object
-            // }));
+            const token = getUserFromTKN(req, res);
+            const myCards = await Card.find({ userId: token.userId });
 
             if (!myCards || myCards.length === 0) {
-                return res.status(404).send('Your cards not found');
+                return res.status(404).send('You dont have cards');
             }
 
 
             res.send({
-                message: `Here are your cards, ${userByToken.name.first}:`,
-                user: userIdByToken,
+                message: `Here are your cards:`,
                 myCards: myCards
             });
 

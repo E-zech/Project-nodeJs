@@ -14,7 +14,10 @@ const getAllUsers = app => {
             }
 
             const allUsers = await User.find().select('-password');
-            res.json(allUsers);
+            res.send({
+                message: "Here are all the users currently signed up to your web application",
+                allUsers
+            });
 
         } catch (err) {
             console.error(chalk.red(err));

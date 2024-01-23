@@ -1,9 +1,8 @@
 import Card from '../../models/Card.js';
-import guard from '../../middleware/guard.js';
 import chalk from 'chalk';
 
 const getAllCards = app => {
-    app.get('/cards', guard, async (req, res) => {
+    app.get('/cards', async (req, res) => {
         try {
             const allCards = await Card.find();
 

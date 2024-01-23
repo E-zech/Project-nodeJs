@@ -9,7 +9,8 @@ import chalk from 'chalk';
 const editCard = app => { // only admin can change biznumber do this !
     app.put('/cards/:id', guard, async (req, res) => {
         try {
-            const userIdByToken = getUserFromTKN(req, res); // id of the user from the token
+            const token = getUserFromTKN(req, res);
+            const userId = token.userId;
             const cardId = req.params.id; // id of the card from the params
 
             const card = await Card.findById(cardId);
@@ -17,8 +18,8 @@ const editCard = app => { // only admin can change biznumber do this !
                 return res.status(404).send('Card not found');
             }
 
-            if (card.userId != userIdByToken) {
-                return res.status(403).send('you are not Authorized //card.js line 81');
+            if (card.userId != userId) {
+                return res.status(403).send('you are not Authorized to update this card');
             }
 
             const { error, value } = CardValid.validate(req.body, { abortEarly: false });

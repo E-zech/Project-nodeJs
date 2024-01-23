@@ -7,13 +7,12 @@ import chalk from 'chalk';
 const deleteCard = app => {
     app.delete('/cards/:id', guard, async (req, res) => {
         try {
-            const userId = getUserFromTKN(req, res); // id from token 
-
-            const userByToken = await User.findById(userId); // user by id from token
+            const token = getUserFromTKN(req, res);
+            const userId = token.userId;
 
             const cardIdByParams = req.params.id; // card id from params
 
-            if (!userByToken || !cardIdByParams) {
+            if (!userId || !cardIdByParams) {
                 return res.status(400).send('Invalid user or card ID');
             }
             const card = await Card.findById(cardIdByParams); // card by id from params
@@ -22,12 +21,19 @@ const deleteCard = app => {
                 return res.status(403).send('card not found');
             }
 
-            if (userId !== card.userId.toString() && !userByToken.isAdmin) {
-                return res.status(403).send('You are not authorized // card.js line 171');
+            if (userId !== card.userId.toString() && !token.isAdmin) {
+                return res.status(403).send('You are not authorized to delete this card');
             }
 
-            const deleteCard = await Card.findByIdAndDelete(cardIdByParams);
-            res.send(deleteCard);
+            const deletedCard = await Card.findByIdAndDelete(cardIdByParams);
+            const message =
+                userId === card.userId.toString()
+                    ? `You have deleted ${card.title}.`
+                    : token.isAdmin
+                        ? `You have deleted ${card.title} successfully.`
+                        : `You have deleted ${card.title}.`;
+
+            res.send({ message, deletedCard });
 
         } catch (err) {
             console.error(chalk.red(err.message));

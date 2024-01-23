@@ -22,10 +22,12 @@ const getUser = app => {
                 return res.status(403).send('User not found');
             }
 
-            const message = token.isAdmin
-                ? `Here are the details of ${userByParams.name.first}.`
-                : `Here are your details, ${userByParams.name.first}.`;
-
+            const message =
+                req.params.id === token.userId
+                    ? `Here are your details, ${userByParams.name.first}.`
+                    : token.isAdmin
+                        ? `Here are the details of ${userByParams.name.first}.`
+                        : `Here are your details, ${userByParams.name.first}.`;
 
             res.send({ message, userByParams });
         }

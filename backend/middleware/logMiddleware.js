@@ -11,7 +11,7 @@ const logMiddleware = (req, res, next) => {
     res.on('finish', () => {
         if (res.statusCode >= 400) {
             content += `Status Code: ${res.statusCode}\n`;
-            content += `Error: ${req.method} to ${req.url} is ${res.statusMessage}\n\n`;
+            content += `Error:  ${res.statusMessage}\n\n`;
 
             fs.appendFile(fileName, content, err => {
                 if (err) {

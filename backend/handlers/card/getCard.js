@@ -1,11 +1,16 @@
 import Card from '../../models/Card.js';
-import guard from '../../middleware/guard.js';
+import mongoose from 'mongoose';
 import chalk from 'chalk';
 
 const getCard = app => {
-    app.get('/cards/:id', guard, async (req, res) => {
+    app.get('/cards/:id', async (req, res) => {
         try {
             const paramsId = req.params.id;
+
+            if (!mongoose.Types.ObjectId.isValid(paramsId)) {
+                return res.status(400).send('Invalid card ID');
+            }
+
             const getCard = await Card.findById(paramsId);
 
             if (!getCard) {

@@ -11,6 +11,7 @@ const likeCard = app => {
             const token = getUserFromTKN(req, res);
             const userId = token.userId;
             const paramsId = req.params.id;
+            let message = '';
 
             const card = await Card.findById(paramsId);
 
@@ -22,11 +23,14 @@ const likeCard = app => {
 
             if (isLikedByUser) {
                 card.likes = card.likes.filter(id => id.toString() !== userId);
+                message = 'You unliked this card.';
+
             } else {
                 card.likes.push(userId);
+                message = 'You liked this card.';
             }
             await card.save();
-            res.send({ message: 'Like toggled successfully', card });
+            res.send({ message, card });
 
         } catch (error) {
             console.error(chalk.red(error.message));

@@ -6,14 +6,14 @@ import chalk from 'chalk';
 
 const deleteUser = app => {
     app.delete('/users/:id', guard, async (req, res) => {
-        const userId = getUserFromTKN(req, res); // id of the user from the toekn ;
-        const user = await User.findById(userId); // check the user in the DB by the ID from the toekn
+        const token = getUserFromTKN(req, res);
+        const userId = token.userId;
 
         if (!req.params.id) {
             return res.status(400).send("Invalid or missing user ID");
         }
 
-        if (userId !== req.params.id && !user?.isAdmin) {
+        if (userId !== req.params.id && !token?.isAdmin) {
             return res.status(401).send('you are not authorized to do so');
         }
 
@@ -24,17 +24,20 @@ const deleteUser = app => {
                 return res.status(404).send('User not found');
             }
 
-            const message = user.isAdmin
-                ? `You have deleted ${deletedUser.name.first} successfully.`
-                : `It's sad to see you leaving, ${deletedUser.name.first} 🫤`;
+            const message =
+                req.params.id === token.userId
+                    ? `It's sad to see you leaving, ${deletedUser.name.first} 🫤`
+                    : token.isAdmin
+                        ? `You have deleted ${deletedUser.name.first} successfully.`
+                        : `It's sad to see you leaving, ${deletedUser.name.first} 🫤`;
 
             res.send({ message, deletedUser });
 
         } catch (err) {
-            console.error(err);
+            console.error(err.message);
             return res.status(500).send('Internal Server Error');
         }
     });
 }
 
-export default deleteUser;
+export default deleteUser; 

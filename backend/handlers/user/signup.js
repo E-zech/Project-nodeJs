@@ -33,7 +33,6 @@ const signup = app => {
 
             res.send({
                 message: `Hello ${newUser.name.first}, you have successfully signed up!`,
-                // userId: newUser._id,
                 newUser
 
             });
