@@ -1,8 +1,6 @@
-import User from '../../models/User.js';
 import Card from '../../models/Card.js';
 import { getUserFromTKN } from '../../configs/config.js';
 import guard from '../../middleware/guard.js';
-import chalk from 'chalk';
 
 const deleteCard = app => {
     app.delete('/cards/:id', guard, async (req, res) => {
@@ -36,8 +34,7 @@ const deleteCard = app => {
             res.send({ message, deletedCard });
 
         } catch (err) {
-            console.error(chalk.red(err.message));
-            res.status(500).send(err.message);
+            return res.status(500).send('Internal Server Error');
         }
     });
 }

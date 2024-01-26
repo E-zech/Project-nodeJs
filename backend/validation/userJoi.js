@@ -1,8 +1,6 @@
 import Joi from 'joi';
 
-
 export const UserValid = Joi.object({
-
     name: Joi.object({
         first: Joi.string().min(2).max(20).label('first name').required(),
         middle: Joi.string().allow(''),
@@ -32,7 +30,6 @@ export const UserValid = Joi.object({
         alt: Joi.string().allow(""),
     }).required(),
 });
-
 
 export const userLoginValidation = Joi.object({
     email: Joi.string().email().lowercase().trim().required(),

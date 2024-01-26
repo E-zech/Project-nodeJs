@@ -3,8 +3,6 @@ import { Types } from "mongoose";
 import { Image } from "./shared/Image.js";
 import { Address } from "./shared/Address.js";
 
-
-
 function randomNumber() {
     return Math.floor(100000 + Math.random() * 900000);
 };
@@ -52,7 +50,6 @@ const cardSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     }
-
 });
 
 cardSchema.pre('save', function (next) {

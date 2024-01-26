@@ -7,7 +7,6 @@ const editUser = app => {
     app.put('/users/:id', guard, async (req, res) => {
         const token = getUserFromTKN(req, res);
         const userId = token.userId;
-
         const paramsId = req.params.id; // id from params
 
         if (userId !== paramsId) {
@@ -45,8 +44,7 @@ const editUser = app => {
             });
 
         } catch (err) {
-            console.error(err.message);
-            return res.status(500).send(`Error:${err.message}`);
+            return res.status(500).send('Internal Server Error');
         }
     });
 }

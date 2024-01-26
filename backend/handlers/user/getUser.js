@@ -1,8 +1,6 @@
 import User from '../../models/User.js';
 import { getUserFromTKN } from '../../configs/config.js';
 import guard from '../../middleware/guard.js';
-import chalk from 'chalk';
-
 
 const getUser = app => {
     app.get('/users/:id', guard, async (req, res) => {
@@ -16,7 +14,6 @@ const getUser = app => {
 
         try {
             const userByParams = await User.findById(req.params.id).select('-password');
-
 
             if (!userByParams) {
                 return res.status(403).send('User not found');
@@ -33,8 +30,7 @@ const getUser = app => {
         }
 
         catch (err) {
-            console.log(err)
-            return res.status(403).send(`Error : ${err}`);
+            return res.status(500).send('Internal Server Error');
         }
     });
 }

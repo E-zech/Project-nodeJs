@@ -2,9 +2,6 @@ import Card from '../../models/Card.js';
 import { CardValid } from '../../validation/cardJoi.js';
 import { getUserFromTKN } from '../../configs/config.js';
 import guard from '../../middleware/guard.js';
-import chalk from 'chalk';
-
-
 
 const editCard = app => { // only admin can change biznumber do this !
     app.put('/cards/:id', guard, async (req, res) => {
@@ -30,15 +27,12 @@ const editCard = app => { // only admin can change biznumber do this !
                 return res.status(400).send(errorObj);
             }
 
-
             card.set(value);
-
             await card.save();
             res.send(card);
 
         } catch (err) {
-            console.error(chalk.red(err.message));
-            res.status(500).send(err.message);
+            return res.status(500).send('Internal Server Error');
         }
     });
 }

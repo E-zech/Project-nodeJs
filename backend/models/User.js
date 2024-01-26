@@ -4,7 +4,6 @@ import { Name } from "./shared/Name.js";
 import { Address } from "./shared/Address.js";
 import { Image } from "./shared/Image.js";
 
-
 const userSchema = new mongoose.Schema({
     name: Name,
 
@@ -47,7 +46,16 @@ const userSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now
-    }
+    },
+
+    loginAttempts: {
+        type: Number,
+        default: 0,
+    },
+    lastLoginAttempt: {
+        type: Date,
+        default: null,
+    },
 
 });
 

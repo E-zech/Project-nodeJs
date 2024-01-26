@@ -1,5 +1,4 @@
 import Card from '../../models/Card.js';
-import chalk from 'chalk';
 
 const getAllCards = app => {
     app.get('/cards', async (req, res) => {
@@ -12,9 +11,8 @@ const getAllCards = app => {
 
             res.send(allCards);
 
-        } catch (error) {
-            console.error(chalk.red(error.message));
-            res.status(500).send(error.message);
+        } catch (err) {
+            return res.status(500).send('Internal Server Error');
         }
     });
 }

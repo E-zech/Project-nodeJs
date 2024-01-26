@@ -1,8 +1,6 @@
 import User from '../../models/User.js';
 import { getUserFromTKN } from '../../configs/config.js';
 import guard from '../../middleware/guard.js';
-import chalk from 'chalk';
-
 
 const changeIsBusiness = app => {
     app.patch('/users/:id', guard, async (req, res) => {
@@ -16,14 +14,12 @@ const changeIsBusiness = app => {
 
         try {
             const user = await User.findById(userId).select('-password');
-
             user.isBusiness = !user.isBusiness;
 
             await user.save();
             res.send(user);
 
         } catch (err) {
-            console.error(err);
             return res.status(500).send('Internal Server Error');
         }
     });

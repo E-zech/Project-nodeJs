@@ -32,3 +32,16 @@ export const CardValid = Joi.object({
     userId: Joi.string(),
     createdAt: Joi.date(),
 });
+
+export const bizNumberValid = Joi.object({
+    bizNumber: Joi.number()
+        .integer()
+        .min(100000)
+        .max(999999)
+        .messages({
+            'number.base': 'bizNumber must be a numeric value',
+            'number.integer': 'bizNumber must be an integer',
+            'number.min': 'bizNumber must be equal to a 6-digit number',
+            'number.max': 'bizNumber must be equal to a 6-digit number',
+        }),
+});

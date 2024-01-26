@@ -2,7 +2,6 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from '../../models/User.js';
 import { userLoginValidation } from '../../validation/userJoi.js';
-import chalk from 'chalk';
 
 const login = app => {
     app.post('/users/login', async (req, res) => {
@@ -10,11 +9,11 @@ const login = app => {
             const { error, value } = userLoginValidation.validate(req.body, { abortEarly: false });
 
             if (error) {
-                const errorObj = error.details.map(err => err.message.replace(/['"]/g, ''));
-                return res.status(400).send(errorObj);
+                return res.status(400).send("email or password is incorrect");
             };
 
             const { email, password } = value;
+
             const user = await User.findOne({ email });
 
             if (!user) {
@@ -39,14 +38,11 @@ const login = app => {
             });
 
         } catch (err) {
-            console.log(chalk.red(err));
-            res.status(500).send({
-                error: 'Internal Server Error',
-                details: err.message,
-            });
+            return res.status(500).send('Internal Server Error');
         }
     });
 }
+
 
 export default login;
 

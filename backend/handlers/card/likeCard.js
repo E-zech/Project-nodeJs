@@ -1,11 +1,8 @@
 import Card from '../../models/Card.js';
 import { getUserFromTKN } from '../../configs/config.js';
 import guard from '../../middleware/guard.js';
-import chalk from 'chalk';
-
 
 const likeCard = app => {
-
     app.patch('/cards/:id', guard, async (req, res) => {
         try {
             const token = getUserFromTKN(req, res);
@@ -32,9 +29,8 @@ const likeCard = app => {
             await card.save();
             res.send({ message, card });
 
-        } catch (error) {
-            console.error(chalk.red(error.message));
-            res.status(500).send(error.message);
+        } catch (err) {
+            return res.status(500).send('Internal Server Error');
         }
     });
 }

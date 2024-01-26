@@ -3,16 +3,13 @@ import Card from '../../models/Card.js';
 import { CardValid } from '../../validation/cardJoi.js';
 import { getUserFromTKN } from '../../configs/config.js';
 import guard from '../../middleware/guard.js';
-import chalk from 'chalk';
 
 const createCard = app => {
-
     app.post('/cards', guard, async (req, res) => {
         try {
-
             const token = getUserFromTKN(req, res);
             const userId = token.userId;
-            const user = await User.findById(userId); // check the user in the DB by the ID from the toekn
+            const user = await User.findById(userId);
             if (!user) {
                 return res.status(404).send('User not found');
             }
@@ -22,7 +19,6 @@ const createCard = app => {
             }
 
             const { error, value } = CardValid.validate(req.body, { abortEarly: false });
-
 
             if (error) {
                 const errorObj = error.details.map(err => err.message.replace(/['"]/g, ''));
@@ -40,8 +36,7 @@ const createCard = app => {
             res.send(newCard);
 
         } catch (err) {
-            console.error(chalk.red(err.message));
-            res.status(500).send(err.message);
+            return res.status(500).send('Internal Server Error');
         }
     });
 }

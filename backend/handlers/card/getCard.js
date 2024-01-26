@@ -1,6 +1,5 @@
 import Card from '../../models/Card.js';
 import mongoose from 'mongoose';
-import chalk from 'chalk';
 
 const getCard = app => {
     app.get('/cards/:id', async (req, res) => {
@@ -19,9 +18,8 @@ const getCard = app => {
 
             res.send(getCard);
 
-        } catch (error) {
-            console.error(chalk.red(error.message));
-            res.status(500).send(error.message);
+        } catch (err) {
+            return res.status(500).send('Internal Server Error');
         }
     });
 }

@@ -1,8 +1,6 @@
 import User from '../../models/User.js';
 import { getUserFromTKN } from '../../configs/config.js';
 import guard from '../../middleware/guard.js';
-import chalk from 'chalk';
-
 
 const getAllUsers = app => {
     app.get('/users', guard, async (req, res) => {
@@ -20,7 +18,6 @@ const getAllUsers = app => {
             });
 
         } catch (err) {
-            console.error(chalk.red(err));
             return res.status(500).send('Internal Server Error');
         }
     });
