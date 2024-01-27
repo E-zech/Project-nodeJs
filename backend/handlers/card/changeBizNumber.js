@@ -33,8 +33,12 @@ const changeBizNumber = app => {
 
             card.bizNumber = value.bizNumber;
             card.set(value);
+
             await card.save();
-            res.send(card);
+            res.send({
+                message: 'You have changed the bizznumber successfully',
+                card
+            });
 
         } catch (err) {
             return res.status(500).send('Internal Server Error');

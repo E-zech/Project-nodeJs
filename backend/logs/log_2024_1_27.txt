@@ -76,3 +76,21 @@ Route: /cards/65b4d0442be639329e4af4c6
 Status Code: 400
 Error:  Bad Request
 
+Time: 2024-01-27T10:05:55.704Z
+Method: DELETE
+Route: /cards/65b4d0442be639329e4af4c6
+Status Code: 403
+Error:  Forbidden
+
+Time: 2024-01-27T10:11:28.974Z
+Method: DELETE
+Route: /cards/65b38c5428c1023ba8ce1182
+Status Code: 403
+Error:  Forbidden
+
+Time: 2024-01-27T10:14:40.665Z
+Method: PATCH
+Route: /cards/bizNumber/65b38c5428c1023ba8ce117e
+Status Code: 400
+Error:  Bad Request
+

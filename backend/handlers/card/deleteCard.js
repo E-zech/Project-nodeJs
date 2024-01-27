@@ -24,13 +24,8 @@ const deleteCard = app => {
             }
 
             const deletedCard = await Card.findByIdAndDelete(cardIdByParams);
-            const message =
-                userId === card.userId.toString()
-                    ? `You have deleted ${card.title}.`
-                    : token.isAdmin
-                        ? `You have deleted ${card.title} successfully.`
-                        : `You have deleted ${card.title}.`;
 
+            const message = `You have deleted "${card.title}" successfully.`
             res.send({ message, deletedCard });
 
         } catch (err) {
