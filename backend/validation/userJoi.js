@@ -8,7 +8,7 @@ export const UserValid = Joi.object({
     }).required(),
 
     isAdmin: Joi.boolean().default(false),
-    isBusiness: Joi.boolean().default(false),
+    isBusiness: Joi.boolean().default(false).required(),
 
     phone: Joi.string().pattern(/0[0-9]{1,2}\-?\s?[0-9]{3}\s?[0-9]{4}/).message('phone must be 9 digits long').required(),
 
@@ -21,7 +21,7 @@ export const UserValid = Joi.object({
         country: Joi.string().min(2).max(56).label('country').required(),
         city: Joi.string().label('city').required(),
         street: Joi.string().label('street').required(),
-        houseNumber: Joi.number().label('houseNumber').required(),
+        houseNumber: Joi.number().min(1).label('houseNumber').required(),
         zip: Joi.number().allow(''),
     }).required(),
 

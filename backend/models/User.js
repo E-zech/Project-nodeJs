@@ -46,16 +46,7 @@ const userSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now
-    },
-
-    loginAttempts: {
-        type: Number,
-        default: 0,
-    },
-    lastLoginAttempt: {
-        type: Date,
-        default: null,
-    },
+    }
 });
 
 userSchema.pre('save', async function (next) {

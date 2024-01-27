@@ -94,3 +94,33 @@ Route: /cards/bizNumber/65b38c5428c1023ba8ce117e
 Status Code: 400
 Error:  Bad Request
 
+Time: 2024-01-27T11:17:17.842Z
+Method: POST
+Route: /signup
+Status Code: 400
+Error:  Bad Request
+
+Time: 2024-01-27T11:18:46.339Z
+Method: PUT
+Route: /users/65b4c6dafb0246b79d10e464
+Status Code: 401
+Error:  Unauthorized
+
+Time: 2024-01-27T11:20:54.894Z
+Method: PUT
+Route: /users/65b4cec0fb0246b79d10e484
+Status Code: 400
+Error:  Bad Request
+
+Time: 2024-01-27T11:20:57.748Z
+Method: PUT
+Route: /users/65b4cec0fb0246b79d10e484
+Status Code: 400
+Error:  Bad Request
+
+Time: 2024-01-27T11:21:58.498Z
+Method: PUT
+Route: /users/65b4cec0fb0246b79d10e484
+Status Code: 400
+Error:  Bad Request
+

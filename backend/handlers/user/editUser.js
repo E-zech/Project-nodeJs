@@ -28,7 +28,6 @@ const editUser = app => {
             }
 
             value.isAdmin = token.isAdmin;
-            value.isBusiness = token.isBusiness;
 
             updateUser.set(value);
             await updateUser.save();
