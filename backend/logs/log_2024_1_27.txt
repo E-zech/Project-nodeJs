@@ -1,0 +1,66 @@
+Time: 2024-01-27T07:53:15.124Z
+Method: GET
+Route: /cardkjih
+Status Code: 404
+Error:  Not Found
+
+Time: 2024-01-27T08:03:44.113Z
+Method: GET
+Route: /cardkjih
+Status Code: 404
+Error:  Not Found
+
+Time: 2024-01-27T08:03:47.083Z
+Method: GET
+Route: /cardkjih
+Status Code: 404
+Error:  Not Found
+
+Time: 2024-01-27T08:25:34.204Z
+Method: GET
+Route: /cardkjihd
+Status Code: 500
+Error:  Internal Server Error
+
+Time: 2024-01-27T08:26:20.026Z
+Method: GET
+Route: /cardkjihd
+Status Code: 500
+Error:  Internal Server Error
+
+Time: 2024-01-27T08:26:26.731Z
+Method: GET
+Route: /cardkjihd
+Status Code: 500
+Error:  Internal Server Error
+
+Time: 2024-01-27T08:27:15.758Z
+Method: GET
+Route: /cardkjihd
+Status Code: 500
+Error:  Internal Server Error
+
+Time: 2024-01-27T08:28:41.829Z
+Method: GET
+Route: /cardkjihd
+Status Code: 500
+Error:  Internal Server Error
+
+Time: 2024-01-27T08:29:49.359Z
+Method: GET
+Route: /cardkjihd
+Status Code: 500
+Error:  Internal Server Error
+
+Time: 2024-01-27T08:31:35.679Z
+Method: GET
+Route: /cardkjihd
+Status Code: 500
+Error:  Internal Server Error
+
+Time: 2024-01-27T08:32:56.321Z
+Method: GET
+Route: /cardkjihd
+Status Code: 500
+Error:  Internal Server Error
+

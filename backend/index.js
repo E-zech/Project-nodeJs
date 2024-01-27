@@ -9,19 +9,11 @@ import cardRoutes from './routes/cardRoutes.js';
 import { initialDataStart } from './initial-data/initial-data.js';
 import logMiddleware from './middleware/logMiddleware.js';
 import dotenv from 'dotenv';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-// Assuming the 'public' folder is in the same directory as your current module
-const filePath = join(__dirname, 'public', 'page404.html');
+import { getContent } from './configs/contentConfig.js';
 
 // Environment setup
 const env = dotenv.config();
 const port = env.parsed.PORT;
-
 
 // MongoDB Connection
 async function main() {
@@ -65,6 +57,7 @@ app.listen(port, () => {
 });
 
 // Error Handling 
-app.get("*", (req, res) => {
-    res.sendFile(filePath);
+app.get("*", async (req, res) => {
+    const combinedContent = await getContent();
+    res.send(combinedContent);
 });
