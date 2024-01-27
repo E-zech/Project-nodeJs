@@ -13,7 +13,7 @@ export const CardValid = Joi.object({
 
     image: Joi.object({
         url: Joi.string().uri().allow(""),
-        alt: Joi.string().min(5).max(200).allow(""),
+        alt: Joi.string().allow(""),
     }).required(),
 
     address: Joi.object({
