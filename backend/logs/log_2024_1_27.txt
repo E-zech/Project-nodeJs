@@ -1,66 +1,78 @@
-Time: 2024-01-27T07:53:15.124Z
+Time: 2024-01-27T08:49:22.848Z
 Method: GET
-Route: /cardkjih
+Route: /cardkjihd
 Status Code: 404
 Error:  Not Found
 
-Time: 2024-01-27T08:03:44.113Z
+Time: 2024-01-27T08:50:02.652Z
 Method: GET
-Route: /cardkjih
+Route: /cardkjihd
 Status Code: 404
 Error:  Not Found
 
-Time: 2024-01-27T08:03:47.083Z
+Time: 2024-01-27T09:08:20.398Z
 Method: GET
-Route: /cardkjih
+Route: /users
+Status Code: 403
+Error:  Forbidden
+
+Time: 2024-01-27T09:08:38.054Z
+Method: POST
+Route: /users/login
+Status Code: 403
+Error:  Forbidden
+
+Time: 2024-01-27T09:35:36.411Z
+Method: GET
+Route: /cards/my-cards
 Status Code: 404
 Error:  Not Found
 
-Time: 2024-01-27T08:25:34.204Z
-Method: GET
-Route: /cardkjihd
-Status Code: 500
-Error:  Internal Server Error
+Time: 2024-01-27T09:36:09.677Z
+Method: PATCH
+Route: /users/65b4cbdefb0246b79d10e478
+Status Code: 401
+Error:  Unauthorized
 
-Time: 2024-01-27T08:26:20.026Z
-Method: GET
-Route: /cardkjihd
-Status Code: 500
-Error:  Internal Server Error
+Time: 2024-01-27T09:36:53.339Z
+Method: POST
+Route: /users/login
+Status Code: 401
+Error:  Unauthorized
 
-Time: 2024-01-27T08:26:26.731Z
-Method: GET
-Route: /cardkjihd
-Status Code: 500
-Error:  Internal Server Error
+Time: 2024-01-27T09:39:32.771Z
+Method: POST
+Route: /cards
+Status Code: 401
+Error:  Unauthorized
 
-Time: 2024-01-27T08:27:15.758Z
-Method: GET
-Route: /cardkjihd
-Status Code: 500
-Error:  Internal Server Error
+Time: 2024-01-27T09:39:44.679Z
+Method: POST
+Route: /cards
+Status Code: 400
+Error:  Bad Request
 
-Time: 2024-01-27T08:28:41.829Z
+Time: 2024-01-27T09:44:08.603Z
 Method: GET
-Route: /cardkjihd
-Status Code: 500
-Error:  Internal Server Error
+Route: /cards/my-cards
+Status Code: 404
+Error:  Not Found
 
-Time: 2024-01-27T08:29:49.359Z
+Time: 2024-01-27T09:44:19.819Z
 Method: GET
-Route: /cardkjihd
-Status Code: 500
-Error:  Internal Server Error
+Route: /cards/my-cards
+Status Code: 404
+Error:  Not Found
 
-Time: 2024-01-27T08:31:35.679Z
-Method: GET
-Route: /cardkjihd
-Status Code: 500
-Error:  Internal Server Error
+Time: 2024-01-27T09:57:10.046Z
+Method: PUT
+Route: /cards/65b4d0442be639329e4af4c6
+Status Code: 403
+Error:  Forbidden
 
-Time: 2024-01-27T08:32:56.321Z
-Method: GET
-Route: /cardkjihd
-Status Code: 500
-Error:  Internal Server Error
+Time: 2024-01-27T09:57:44.987Z
+Method: PUT
+Route: /cards/65b4d0442be639329e4af4c6
+Status Code: 400
+Error:  Bad Request
 

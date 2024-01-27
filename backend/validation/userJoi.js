@@ -26,7 +26,7 @@ export const UserValid = Joi.object({
     }).required(),
 
     image: Joi.object({
-        url: Joi.string().pattern(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([/\w\.-]*)*\/?$/).allow(""),
+        url: Joi.string().uri().allow(""),
         alt: Joi.string().allow(""),
     }).required(),
 });

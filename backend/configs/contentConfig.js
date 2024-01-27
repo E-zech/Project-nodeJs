@@ -11,7 +11,7 @@ const keyFramesPath = join(__dirname, '..', 'public', 'keyFrames.css');
 
 const readFileSync = (filePath) => fs.readFileSync(filePath, 'utf8');
 
-async function getContent() {
+async function getContent(res) {
     try {
         const htmlContent = await readFileSync(htmlPath);
         const cssContent = await readFileSync(cssPath);
@@ -23,7 +23,7 @@ async function getContent() {
       <style>${keyFramesContent}</style>
     `;
     } catch (error) {
-        res.status(500).send('Internal Server Error');
+        res.status(404).send('404 Page Was Not Found');
     }
 }
 

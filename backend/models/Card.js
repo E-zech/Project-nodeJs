@@ -8,7 +8,6 @@ function randomNumber() {
 };
 
 const cardSchema = new mongoose.Schema({
-
     title: { type: String, required: true },
     subtitle: { type: String, required: true },
     description: { type: String, required: true },
@@ -59,7 +58,5 @@ cardSchema.pre('save', function (next) {
     next();
 });
 
-
 const Card = mongoose.model('cards', cardSchema);
-
 export default Card;

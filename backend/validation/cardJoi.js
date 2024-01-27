@@ -1,7 +1,6 @@
 import Joi from 'joi';
 
 export const CardValid = Joi.object({
-
     title: Joi.string().min(2).max(30).required(),
     subtitle: Joi.string().min(2).max(30).required(),
     description: Joi.string().min(10).max(200).required(),
@@ -13,7 +12,7 @@ export const CardValid = Joi.object({
     web: Joi.string().pattern(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([/\w\.-]*)*\/?$/).required(),
 
     image: Joi.object({
-        url: Joi.string().pattern(/^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w.-]*)*\/?$/).allow(""),
+        url: Joi.string().uri().allow(""),
         alt: Joi.string().min(5).max(200).allow(""),
     }).required(),
 
@@ -25,7 +24,6 @@ export const CardValid = Joi.object({
         houseNumber: Joi.number().label('houseNumber').required(),
         zip: Joi.number().allow(''),
     }).required(),
-
 
     bizNumber: Joi.number(),
     likes: Joi.array().default([]),

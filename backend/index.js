@@ -58,6 +58,6 @@ app.listen(port, () => {
 
 // Error Handling 
 app.get("*", async (req, res) => {
-    const combinedContent = await getContent();
+    const combinedContent = await getContent(res);
     res.send(combinedContent);
 });

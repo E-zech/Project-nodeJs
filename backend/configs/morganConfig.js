@@ -8,9 +8,7 @@ export const coloredStatus = (req, res) => {
     const date = moment().format('DD-MM-YYYY');
     const time = moment().format('HH:mm:ss');
 
-
     let methodColor;
-
     switch (method) {
         case 'GET':
             methodColor = chalk.green(method);

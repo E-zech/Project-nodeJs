@@ -56,7 +56,6 @@ const userSchema = new mongoose.Schema({
         type: Date,
         default: null,
     },
-
 });
 
 userSchema.pre('save', async function (next) {
@@ -74,9 +73,7 @@ userSchema.pre('save', async function (next) {
     }
 });
 
-
 const User = mongoose.model("users", userSchema);
-
 export default User;
 
 

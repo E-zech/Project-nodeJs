@@ -33,7 +33,10 @@ const createCard = app => {
 
             await newCard.save();
 
-            res.send(newCard);
+            res.send({
+                message: `Your card for has been successfully created ${user.name.first}`,
+                card: newCard
+            });
 
         } catch (err) {
             return res.status(500).send('Internal Server Error');
