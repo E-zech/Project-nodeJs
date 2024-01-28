@@ -2,7 +2,8 @@
 
 ## Introduction
 
-To begin, refer to the API Documentation URL (https://documenter.getpostman.com/view/28292545/2s9Yyqi2gL#a1f74c42-b8b7-4fdb-a62f-d434a166de38) for comprehensive information on user authentication and card management. This project focuses on users and cards, ensuring that only authorized users can utilize CRUD (Create, Read, Update, Delete) functionality within the application.
+To begin, refer to the API Documentation URL (https://documenter.getpostman.com/view/28292545/2s9Yyqi2gL#a1f74c42-b8b7-4fdb-a62f-d434a166de38) 
+for comprehensive information on user authentication and card management. This project focuses on users and cards, ensuring that only authorized users can utilize CRUD (Create, Read, Update, Delete) functionality within the application.
 
 ## User Authentication
 
