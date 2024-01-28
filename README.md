@@ -1,4 +1,4 @@
-# Project Name: Authentication & Card Management
+# Project Name: NodeJs + MongoDB
 
 ## Introduction
 
@@ -33,3 +33,19 @@ Registered users can express appreciation for a card by liking or unliking it.
 ### Card Deletion
 
 Only the admin or the owner of a card holds the authority to delete a card. This ensures that the removal of a business representation is managed by those directly involved in its creation and administration.
+
+## Technologies and Libraries
+
+The backend of this project is developed using the following technologies and libraries:
+
+- **Node.js:** A JavaScript runtime built on Chrome's V8 JavaScript engine.
+- **Express:** A minimal and flexible Node.js web application framework.
+- **Mongoose:** An elegant MongoDB object modeling tool designed to work in an asynchronous environment.
+- **bcrypt:** A library for hashing passwords.
+- **chalk:** A library for styling terminal strings with ANSI escape codes.
+- **cors:** A middleware for enabling Cross-Origin Resource Sharing in the Express.js framework.
+- **dotenv:** A zero-dependency module that loads environment variables from a .env file.
+- **joi:** A powerful schema description language and data validator for JavaScript objects.
+- **jsonwebtoken:** A library to generate and verify JSON Web Tokens (JWT).
+- **moment:** A library for parsing, validating, manipulating, and formatting dates.
+- **morgan:** A HTTP request logger middleware for Node.js.
