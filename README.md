@@ -50,3 +50,71 @@ The backend of this project is developed using the following technologies and li
 - **jsonwebtoken:** A library to generate and verify JSON Web Tokens (JWT).
 - **moment:** A library for parsing, validating, manipulating, and formatting dates.
 - **morgan:** A HTTP request logger middleware for Node.js.
+
+## Folder Structure
+
+The backend codebase is organized using the following folder structure:
+
+1. **configs**
+   - `config.js`: Configuration file for general application settings.
+   - `contentConfig.js`: Configuration for content handling.
+   - `morganConfig.js`: Configuration for Morgan, the HTTP request logger middleware.
+
+2. **handlers**
+   1. **card**
+      - `changeBizNumber.js`: Handler for changing the BizNumber of a card.
+      - `createCard.js`: Handler for creating a new card.
+      - `deleteCard.js`: Handler for deleting a card.
+      - `editCard.js`: Handler for editing a card.
+      - `getAllCards.js`: Handler for retrieving all cards.
+      - `getCard.js`: Handler for retrieving a specific card.
+      - `getMyCards.js`: Handler for retrieving cards associated with the logged-in user.
+      - `likeCard.js`: Handler for liking/unliking a card.
+
+   2. **user**
+      - `changeBusiness.js`: Handler for changing a user's business status.
+      - `deleteUser.js`: Handler for deleting a user.
+      - `editUser.js`: Handler for editing a user's profile.
+      - `getAllUsers.js`: Handler for retrieving all users.
+      - `getUser.js`: Handler for retrieving a specific user.
+      - `login.js`: Handler for user login.
+      - `signup.js`: Handler for user signup.
+
+3. **initial-data**
+   - `initial-data.js`: Script for initializing the application with initial data.
+   - `initial-dataJSON.js`: Script containing initial data in JSON format.
+
+4. **logs**
+   - Log files created when the status code is >= 400.
+
+5. **middleware**
+   - `guard.js`: Middleware for guarding routes based on user authentication.
+   - `logMiddleware.js`: Middleware for logging requests.
+
+6. **models**
+   1. **shared**
+      - `Address.js`: Shared model for representing addresses.
+      - `Image.js`: Shared model for representing images.
+      - `Name.js`: Shared model for representing names.
+
+   2. **card**
+      - `Card.js`: Model for representing card data.
+
+   3. **user**
+      - `User.js`: Model for representing user data.
+
+7. **public**
+   - `keyFrames.css`: CSS file for keyframe animations.
+   - `page404.css`: CSS file for styling the 404 error page.
+   - `page404.html`: HTML file for the 404 error page.
+
+8. **routes**
+   - `cardRoutes.js`: Route handler pointing to all files in `handlers/card` directory.
+   - `userRoutes.js`: Route handler pointing to all files in `handlers/user` directory.
+
+9. **validation**
+   - `cardJoi.js`: Validation schema for card-related data using Joi.
+   - `userJoi.js`: Validation schema for user-related data using Joi.
+
+10. `.env`: Configuration file for environment variables.
+11. `index.js`: The main entry point of the application.
